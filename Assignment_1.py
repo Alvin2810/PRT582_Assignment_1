@@ -16,3 +16,10 @@ for letters in generated_word:
 print(" ".join(blank_spaces))
 print("\nNumber of letters: "+ str(len(generated_word)))
 print("Number of blank space: "+ str(len(blank_spaces))+"\n")
+
+while "_" in blank_spaces:
+    guess = input("\nGuess a letter: ").lower()
+    for i in range(len(generated_word)):
+        if generated_word[i] == guess:
+            blank_spaces[i] = guess
+    print(" ".join(blank_spaces))
