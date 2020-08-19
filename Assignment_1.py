@@ -10,13 +10,11 @@ def generate_random_word():
 generated_word = generate_random_word()
 print("\n"+ generated_word + "\n")
 
+
 display=[]
 display.extend(generated_word)
-
 for i in range(len(display)):
     display[i]= "_"
 print(" ".join(display))
-
-print(len(generated_word))
-
-print(len(display))
+print("\nNumber of letters: "+ str(len(generated_word)))
+print("Number of blank space: "+ str(len(display))+"\n")
