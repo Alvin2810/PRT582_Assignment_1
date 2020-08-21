@@ -22,16 +22,16 @@ no_changes_made=[]
 no_changes_made.extend(blank_spaces)
 
 while "_" in blank_spaces:
-    print("Lives: "+str(lives)) 
+    print("\nLives: "+str(lives)) 
     guess = input("\nGuess a letter: ").lower()
+    
+    if no_changes_made == blank_spaces:
+        lives = lives-1
     for i in range(len(generated_word)):
         if generated_word[i] == guess:
             blank_spaces[i] = guess
-    if no_changes_made == blank_spaces:
-        lives = lives-1
-
-    for i in range(len(blank_spaces)):
-       no_changes_made[i] = blank_spaces[i]  
+        no_changes_made[i] = blank_spaces[i]
     
     print(" ".join(blank_spaces))
-  
+
+    
