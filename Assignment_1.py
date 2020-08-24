@@ -29,11 +29,17 @@ while "_" in blank_spaces:
             blank_spaces[number] = guess
     if no_changes_made == blank_spaces:
         lives = lives-1  
+    if lives < 0:
+        print("Game Over")
+        break
+    if guess.isalpha() == False:
+        lives+=1
+        print("\nPlease make sure that you are entering a valid letter rather than symbols, numbers or other characters")
     
     for number in range(len(blank_spaces)):
         no_changes_made[number] = blank_spaces[number]
     
     print(" ".join(blank_spaces))
-    
+
 
     
