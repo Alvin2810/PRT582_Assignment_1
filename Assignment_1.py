@@ -32,9 +32,15 @@ while "_" in blank_spaces:
     if lives < 0:
         print("Game Over")
         break
+
     if guess.isalpha() == False:
         lives+=1
         print("\nPlease make sure that you are entering a valid letter rather than symbols, numbers or other characters")
+    
+    if len(guess) > 1:
+        if guess.isalpha() != False:
+            lives+=1
+        print("\nPlease only enter one letter as guess")  
     
     for number in range(len(blank_spaces)):
         no_changes_made[number] = blank_spaces[number]
