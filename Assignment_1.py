@@ -19,11 +19,17 @@ print("Number of blank space: "+ str(len(blank_spaces))+"\n")
 
 lives = 5
 no_changes_made=[]
+
+used=[]
+
 no_changes_made.extend(blank_spaces)
 
 while "_" in blank_spaces:
     print("\nLives: "+str(lives)) 
     guess = input("\nGuess a letter: ").lower()
+
+    used.append(guess)
+
     for number in range(len(generated_word)):
         if generated_word[number] == guess:
             blank_spaces[number] = guess
@@ -44,8 +50,9 @@ while "_" in blank_spaces:
     
     for number in range(len(blank_spaces)):
         no_changes_made[number] = blank_spaces[number]
-    
-    print(" ".join(blank_spaces))
+        
+    print("\n"+" ".join(blank_spaces))
+    print("\nused words: "+ str(used)+"\n")
 
 
     
