@@ -11,6 +11,7 @@ generated_word = generate_random_word()
 print("\n"+ generated_word + "\n")
 
 blank_spaces=[]
+
 for letters in generated_word:
     blank_spaces.append("_")
 print(" ".join(blank_spaces))
@@ -19,24 +20,22 @@ print("Number of blank space: "+ str(len(blank_spaces))+"\n")
 
 lives = 5
 no_changes_made=[]
-
 used=[]
-
 no_changes_made.extend(blank_spaces)
+
 
 while "_" in blank_spaces:
     print("\nLives: "+str(lives)) 
     guess = input("\nGuess a letter: ").lower()
-
     used.append(guess)
-
     for number in range(len(generated_word)):
         if generated_word[number] == guess:
             blank_spaces[number] = guess
     if no_changes_made == blank_spaces:
+        print("\nSorry you guessed wrong")
         lives = lives-1  
     if lives < 0:
-        print("Game Over")
+        print("\nSorry you ran out of lives\n\nThe word was:  "+ generated_word+"\n")
         break
 
     if guess.isalpha() == False:
@@ -54,5 +53,6 @@ while "_" in blank_spaces:
     print("\n"+" ".join(blank_spaces))
     print("\nused words: "+ str(used)+"\n")
 
-
+if "_" not in blank_spaces:
+    print("\nCongratulations you have found the word\n")
     
