@@ -1,28 +1,37 @@
 from english_words import english_words_lower_set
 import random
 
+# declaring variables
+lives = 5
+no_changes_made=[]
+used=[]
+blank_spaces=[]
+
 def generate_random_word():
     word_list = list(english_words_lower_set)
     word = random.choice(word_list)
     word = word.lower()
     return word
 
+def isnotaletter(guess):
+    if guess.isalpha() == False:
+        return True
+    elif len(guess) > 1:
+        return True
+    else:
+        return False
+
 generated_word = generate_random_word()
 print("\n"+ generated_word + "\n")
-
-blank_spaces=[]
 
 for letters in generated_word:
     blank_spaces.append("_")
 print(" ".join(blank_spaces))
+
 print("\nNumber of letters: "+ str(len(generated_word)))
 print("Number of blank space: "+ str(len(blank_spaces))+"\n")
 
-lives = 5
-no_changes_made=[]
-used=[]
 no_changes_made.extend(blank_spaces)
-
 
 while "_" in blank_spaces:
     print("\nLives: "+str(lives)) 
@@ -35,17 +44,12 @@ while "_" in blank_spaces:
         print("\nSorry you guessed wrong")
         lives = lives-1  
     if lives < 0:
-        print("\nSorry you ran out of lives\n\nThe word was:  "+ generated_word+"\n")
+        print("\nYou have run out of lives\n\nThe word was:  "+ generated_word+"\n")
         break
 
-    if guess.isalpha() == False:
+    if isnotaletter(guess):
         lives+=1
-        print("\nPlease make sure that you are entering a valid letter rather than symbols, numbers or other characters")
-    
-    if len(guess) > 1:
-        if guess.isalpha() != False:
-            lives+=1
-        print("\nPlease only enter one letter as guess")  
+        print("\nPlease make sure that you are entering a single valid letter rather than symbols, numbers or a string of characters")
     
     for number in range(len(blank_spaces)):
         no_changes_made[number] = blank_spaces[number]
