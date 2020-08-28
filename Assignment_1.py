@@ -22,22 +22,17 @@ def isnotaletter(guess):
     else:
         return False
 
-generated_word = generate_random_word() #creating a random word
-print("\n"+ generated_word + "\n")
+generated_word = generate_random_word()
 
 #creating blank spaces for each letter in the word
 for letters in generated_word:
     blank_spaces.append("_")
-print(" ".join(blank_spaces))
-
-print("\nNumber of letters: "+ str(len(generated_word)))
-print("Number of blank space: "+ str(len(blank_spaces))+"\n")
 
 no_changes_made.extend(blank_spaces)
 
 while "_" in blank_spaces:
     print("\nLives left: "+str(lives_left)) 
-
+    print("\n"+" ".join(blank_spaces))
     guess = input("\nGuess a letter: ")
     guess.lower()
 
@@ -53,12 +48,12 @@ while "_" in blank_spaces:
         print("\nSorry you guessed wrong")
         lives_left = lives_left-1  
     
-    #checking if the guess is a letter or not
+    
     if isnotaletter(guess):
         lives_left+=1
         print("\nPlease make sure that you are entering a single valid letter rather than symbols, numbers or a string of characters")
     
-    #checking if the player has ran out of lives 
+    
     if lives_left < 0:
         print("\nYou have run out of lives\n\nThe word was:  "+ generated_word+"\n")
         break 
@@ -66,9 +61,10 @@ while "_" in blank_spaces:
     for number in range(len(blank_spaces)):
         no_changes_made[number] = blank_spaces[number]
         
-    print("\n"+" ".join(blank_spaces))
+    
     print("\nused words: "+ str(used_words_list)+"\n")
 
 if "_" not in blank_spaces:
+    print("\n"+" ".join(blank_spaces))
     print("\nCongratulations you have found the word\n")
     
