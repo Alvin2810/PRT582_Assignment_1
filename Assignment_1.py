@@ -1,12 +1,10 @@
 from english_words import english_words_lower_set
 import random
-
 # declaring variables
 lives = 5
 no_changes_made=[]
 used=[]
 blank_spaces=[]
-
 def generate_random_word():
     word_list = list(english_words_lower_set)
     word = random.choice(word_list)
@@ -43,14 +41,15 @@ while "_" in blank_spaces:
     if no_changes_made == blank_spaces:
         print("\nSorry you guessed wrong")
         lives = lives-1  
-    if lives < 0:
-        print("\nYou have run out of lives\n\nThe word was:  "+ generated_word+"\n")
-        break
-
+     
     if isnotaletter(guess):
         lives+=1
         print("\nPlease make sure that you are entering a single valid letter rather than symbols, numbers or a string of characters")
     
+    if lives < 0:
+        print("\nYou have run out of lives\n\nThe word was:  "+ generated_word+"\n")
+        break 
+
     for number in range(len(blank_spaces)):
         no_changes_made[number] = blank_spaces[number]
         
