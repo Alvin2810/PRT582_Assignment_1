@@ -3,7 +3,7 @@ import random
 # declaring variables
 lives_left = 5
 no_changes_made=[]
-used_words_list=[]
+used_letters_list=[]
 blank_spaces=[]
 
 #defining the function to create a random word
@@ -36,7 +36,7 @@ while "_" in blank_spaces:
     guess = input("\nGuess a letter: ")
     guess.lower()
 
-    used_words_list.append(guess) #adding the newly guessed character into the used words list
+    used_letters_list.append(guess) #adding the newly guessed character into the used words list
 
     #checking if the guess is in the word
     for number in range(len(generated_word)): 
@@ -62,7 +62,7 @@ while "_" in blank_spaces:
         no_changes_made[number] = blank_spaces[number]
         
     
-    print("\nused words: "+ str(used_words_list)+"\n")
+    print("\nused words: "+ str(used_letters_list)+"\n")
 
 if "_" not in blank_spaces:
     print("\n"+" ".join(blank_spaces))
